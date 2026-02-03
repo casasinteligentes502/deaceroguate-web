@@ -1,0 +1,565 @@
+/* =========================================================
+   Deacero Guatemala - styles.css (corregido y completo)
+   Compatible con index.html + app.js actuales
+   ========================================================= */
+
+/* ===== RESET BÁSICO ===== */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Poppins', sans-serif;
+}
+
+:root{
+  --bg:#f5f6f8;
+  --text:#222;
+  --muted:#666;
+
+  --card:#ffffff;
+  --border:#e7e7e7;
+
+  --shadow:0 4px 12px rgba(0,0,0,0.08);
+
+  --wa:#25D366;
+  --danger:#e63946;
+
+  --radius:14px;
+  --radius-sm:10px;
+
+  --container:1200px;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.5;
+}
+
+/* ===== UTILIDADES ===== */
+.container{
+  width:90%;
+  max-width:var(--container);
+  margin:auto;
+}
+
+.muted{ color:var(--muted); }
+
+h2{ margin-bottom:25px; font-size:28px; }
+h3{ margin-bottom:10px; font-size:18px; }
+
+.price{
+  font-weight:700;
+  margin-top:8px;
+}
+
+/* ===== SECCIONES ===== */
+.section{ padding:60px 0; }
+.section--alt{ background:#fafafa; }
+
+.section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+/* ===== HEADER / NAV ===== */
+.header{
+  background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(1.2) blur(10px);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+
+.header__content{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0;
+  gap:18px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:220px;
+}
+
+.brand__logo{
+  height:80px;
+  width:auto;
+  display:block;
+}
+
+.logo{
+  font-size:18px;
+  line-height:1.1;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+.nav a{
+  text-decoration:none;
+  color:#333;
+  font-weight:600;
+  padding:8px 10px;
+  border-radius:10px;
+}
+
+.nav a:hover{
+  background:rgba(0,0,0,.05);
+}
+
+.nav-cta{
+  background:var(--wa);
+  color:white !important;
+  padding:8px 12px;
+  border-radius:10px;
+  box-shadow:0 6px 14px rgba(37,211,102,.18);
+}
+
+.nav-cta:hover{ filter:brightness(.95); }
+
+.nav-cta--danger{
+  background:var(--danger);
+  box-shadow:0 6px 14px rgba(230,57,70,.16);
+}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;
+  color:white;
+  padding:96px 0;
+}
+
+.hero--banner{
+  /* Puedes cambiar la imagen aquí por una real */
+  background:url("img/porton-automatico.jpg") center/cover no-repeat;
+}
+
+/* Overlay más CLARO (para que el fondo se vea más claro) */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  /* Ajusta la opacidad si quieres aún más claro: 0.35–0.50 */
+  background:linear-gradient(90deg, rgba(0,0,0,.45), rgba(0,0,0,.25));
+}
+
+.hero__wrap{ position:relative; z-index:2; }
+
+.hero__text{
+  max-width:720px;
+  padding:26px 26px;
+  border-radius:18px;
+
+  /* Caja semitransparente que "juega" con el fondo */
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(10px) saturate(1.2);
+  box-shadow:0 18px 44px rgba(0,0,0,.22);
+}
+
+.hero__text h2{
+  font-size:40px;
+  margin-bottom:12px;
+}
+
+.hero__text p{
+  margin-bottom:14px;
+  text-shadow:0 3px 12px rgba(0,0,0,.45);
+}
+
+.hero__badges{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:12px 0 14px;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.18);
+  padding:7px 12px;
+  border-radius:999px;
+  font-size:13px;
+  color:white;
+}
+
+.chip--alert{
+  background:rgba(230,57,70,.22);
+  border-color:rgba(230,57,70,.28);
+}
+
+/* Mensaje promos */
+.mensaje{
+  margin-top:10px;
+  font-weight:600;
+}
+
+/* ===== BOTONES ===== */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 18px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:700;
+  margin-top:10px;
+  border:1px solid transparent;
+  cursor:pointer;
+}
+
+.btn:hover{ filter:brightness(.97); }
+
+.wa-btn{
+  background:var(--wa);
+  color:white;
+}
+
+.btn--ghost{
+  background:transparent;
+  border:1px solid rgba(255,255,255,.35);
+  color:white;
+}
+
+.section .btn--ghost{
+  border:1px solid #ccc;
+  color:#333;
+}
+
+.btn--danger{
+  background:var(--danger);
+  color:white;
+}
+
+/* ===== TARJETAS / GRIDS ===== */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+  overflow:hidden;
+  display:block;
+  min-height:0;
+}
+
+.card-body{ padding:22px; }
+
+.card img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  display:block;
+}
+
+/* Servicios compactos */
+#servicios .card{ min-height:150px; }
+
+/* Destacados (imagen arriba) */
+#destacados .card{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+
+#destacados .card img{ height:210px; }
+
+/* Badge */
+.badge{
+  display:inline-block;
+  background:#eee;
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+}
+
+/* ===== TRABAJOS / GALERÍA ===== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.gallery__item{
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
+
+.gallery__item img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  display:block;
+}
+.gallery__item video{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  display:block;
+}
+
+
+.gallery-cta{ margin-top:18px; }
+
+/* ===== CATÁLOGO / FILTROS ===== */
+.filters{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:12px;
+  margin:14px 0 18px;
+}
+
+.field label{
+  display:block;
+  font-weight:700;
+  margin-bottom:6px;
+  color:#333;
+}
+
+.field input,
+.field select{
+  width:100%;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  outline:none;
+  background:white;
+}
+
+.field input:focus,
+.field select:focus{
+  border-color:rgba(37,211,102,.55);
+  box-shadow:0 0 0 3px rgba(37,211,102,.12);
+}
+
+.field--actions{
+  display:flex;
+  align-items:flex-end;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+/* Tarjeta del catálogo (PCARD creada por JS) */
+.pcard{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+}
+
+.pcard img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  display:block;
+}
+
+.pcard__body{
+  padding:18px;
+}
+
+/* ===== CONTACTO ===== */
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+
+.form{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:18px;
+}
+
+.form label{
+  display:block;
+  font-weight:700;
+  margin-bottom:12px;
+}
+
+.form input,
+.form textarea{
+  width:100%;
+  margin-top:6px;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  outline:none;
+}
+
+.form input:focus,
+.form textarea:focus{
+  border-color:rgba(37,211,102,.55);
+  box-shadow:0 0 0 3px rgba(37,211,102,.12);
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:20px 0;
+  margin-top:40px;
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float{
+  position:fixed;
+  bottom:92px; /* deja espacio a la bottom-bar en móvil */
+  right:20px;
+  background:var(--wa);
+  color:white;
+  padding:14px 18px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:800;
+  box-shadow:0 10px 22px rgba(0,0,0,0.22);
+  z-index:1200;
+}
+
+.whatsapp-float:hover{ filter:brightness(.96); }
+
+/* ===== BARRA INFERIOR (MÓVIL) ===== */
+.bottom-bar{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:white;
+  display:none; /* solo móvil */
+  box-shadow:0 -2px 12px rgba(0,0,0,0.12);
+  z-index:1300;
+}
+
+.bottom-bar__btn{
+  flex:1;
+  text-align:center;
+  padding:14px 10px;
+  text-decoration:none;
+  font-weight:900;
+  color:white;
+  background:var(--wa);
+}
+
+.bottom-bar__btn--danger{ background:var(--danger); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 980px){
+  .hero__text h2{ font-size:34px; }
+  .filters{ grid-template-columns:repeat(2, 1fr); }
+}
+
+@media (max-width: 768px){
+  .section{ padding:40px 0; }
+
+  .header__content{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .brand{ min-width:auto; }
+  .nav{ justify-content:flex-start; }
+
+  .card img{ height:180px; }
+  .gallery__item img{ height:170px; }
+
+  .hero{ padding:76px 0; }
+  .hero__text{ padding:18px; }
+  .hero__text h2{ font-size:28px; }
+
+  .bottom-bar{ display:flex; }
+}
+
+@media (max-width: 420px){
+  .filters{ grid-template-columns:1fr; }
+  .whatsapp-float{ right:14px; }
+}
+/* ===== MARCAS (uniformes) ===== */
+.marcas-title{
+  margin: 30px 0 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.marcas{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:18px;
+  padding:20px 0 40px;
+}
+
+/* Caja fija para normalizar tamaños */
+.marca-item{
+  width:130px;      /* ajusta 110–150 si quieres */
+  height:60px;      /* altura uniforme */
+  background:#fff;
+  border:1px solid rgba(0,0,0,0.06);
+  border-radius:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+}
+
+/* El logo se adapta a la caja */
+.marca-item img{
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  filter: grayscale(25%);
+  opacity:0.9;
+  transition:0.25s;
+}
+
+.marca-item:hover img{
+  filter:none;
+  opacity:1;
+  transform:scale(1.06);
+}
+
+@media (max-width: 600px){
+  .marca-item{ width:110px; height:55px; }
+}
