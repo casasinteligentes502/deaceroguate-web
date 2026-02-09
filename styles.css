@@ -577,3 +577,16 @@ h3{ margin-bottom:10px; font-size:18px; }
   border-radius: 18px;
   box-shadow: 0 12px 28px rgba(0,0,0,0.18);
 }
+/* ===== TEXTO "Fundada desde 2004" ===== */
+.brand__text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.1;
+}
+
+.brand__since{
+  font-size:12px;
+  font-weight:600;
+  color:#666;
+  margin-top:2px;
+}
