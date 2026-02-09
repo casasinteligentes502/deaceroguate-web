@@ -189,22 +189,38 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     window.scrollTo({ top, behavior: "smooth" });
   });
 });
-// 🎬 Videos SOLO al pasar el mouse (Trabajos realizados)
+// 🎬 Videos con botón PLAY (Trabajos realizados)
 window.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".work-video").forEach((video) => {
-    video.addEventListener("mouseenter", () => {
+  document.querySelectorAll(".video-box").forEach((box) => {
+    const video = box.querySelector("video.work-video");
+    const btn = box.querySelector(".play-btn");
+    if (!video || !btn) return;
+
+    video.pause();
+    video.currentTime = 0;
+
+    btn.addEventListener("click", () => {
+      btn.classList.add("hidden");
+
+      document.querySelectorAll(".video-box video.work-video").forEach(v => {
+        if (v !== video) {
+          v.pause();
+          v.currentTime = 0;
+          const otherBtn = v.closest(".video-box")?.querySelector(".play-btn");
+          if (otherBtn) otherBtn.classList.remove("hidden");
+        }
+      });
+
       video.play().catch(() => {});
     });
 
-    video.addEventListener("mouseleave", () => {
-      video.pause();
-      video.currentTime = 0;
+    video.addEventListener("pause", () => {
+      btn.classList.remove("hidden");
     });
 
-    // 📱 móvil: tap play/pausa
-    video.addEventListener("click", () => {
-      if (video.paused) video.play().catch(() => {});
-      else video.pause();
+    video.addEventListener("ended", () => {
+      btn.classList.remove("hidden");
+      video.currentTime = 0;
     });
   });
 });
